@@ -1,49 +1,17 @@
-//search.js
 
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Button } from "react-native";
-
-export default function Search({ executeSearch }) {
-    const [search, setSearch] = useState("");
-
-    const handleSearch = () => {
-        executeSearch(search);
-    };
-
-    return (
-        <View style={styles.searchBox}>
-            <TextInput
-                value={search}
-                onChangeText={(text) => setSearch(text)}
-                placeholder="Search..."
-                returnKeyType="search"
-                onSubmitEditing={handleSearch}
-            />
-            <Button title="Search" onPress={handleSearch} />
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
-    searchBox: {
-        marginBottom: 20,
-        borderColor: "333",
-        borderWidth: 1,
-        padding: 5,
-    },
-});
-import React, {useState} from "react";
 import { StyleSheet, View, TextInput, Button } from "react-native";
 
 export default function Search({ executeSearch }) {
     const [search, setSearch] = useState('');
 
     return (
-        <View style={styles.searchBox}>
+        <View style={styles.container}>
             <TextInput
-               value={search}
+                value={search}
                 onChangeText={text => setSearch(text)}
                 placeholder="Search..."
+                style={styles.searchInput}
                 returnKeyType="search"
                 onSubmitEditing={() => executeSearch(search)}
             />
@@ -52,10 +20,26 @@ export default function Search({ executeSearch }) {
 }
 
 const styles = StyleSheet.create({
-    searchBox: {
-        marginBottom: 20,
-        borderColor: '333',
+    container: {
+        marginBottom: 30, 
+        paddingHorizontal: 10, 
+        paddingVertical: 5, 
+        backgroundColor: '#f0f0f0', 
+        borderRadius: 20, 
+        shadowColor: "#000", 
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5, 
+    },
+    searchInput: {
+        borderColor: '#666', 
         borderWidth: 1,
-        padding: 5,
+        backgroundColor: '#fff', 
+        borderRadius: 15, 
+        padding: 10, 
     }
 });
